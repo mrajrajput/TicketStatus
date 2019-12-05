@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:body>
+	<!-- ########################################
+     	     ALL TAGS ABOVE THIS LINE WILL BE REMOVED BY JSF -->
+	<ui:composition>
+
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+				<h:panelGrid id="footerGrid" styleClass="text-center">
+					<h:panelGroup id="footerGrp">
+						<h:outputLink styleClass="alert alert-primary" id="contactUslnk"
+							title="Contact Us" value="http://www.google.gov/">
+							<f:verbatim>Contact Us</f:verbatim>
+						</h:outputLink>
+
+						<h:outputText styleClass="sepFooter" id="dash2" value=" | "></h:outputText>
+
+						<h:outputLink styleClass="alert alert-primary" 
+							title="Google" target="_blank"
+							value="http://www.google.gov/">
+							<f:verbatim>Google.com</f:verbatim>
+						</h:outputLink>
+
+						<h:outputText styleClass="sepFooter" id="dash3" value=" | "></h:outputText>
+
+						<h:outputLink styleClass="alert alert-primary" id="privacylnk"
+							title="Privacy/Security Policy" target="_blank"
+							value="http://www.google.com">
+							<f:verbatim>Privacy/Security Policy</f:verbatim>
+						</h:outputLink>
+					</h:panelGroup>
+				</h:panelGrid>
+			</div>
+		</div>
+
+	</ui:composition>
+	<!-- ########################################
+     	     ALL TAGS BELOW THIS LINE WILL BE REMOVED BY JSF -->
+</h:body>
+</html>

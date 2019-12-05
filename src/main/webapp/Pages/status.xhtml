@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<f:view>
+	<ui:composition template="/commonLayout/commonLayout.xhtml">
+		<ui:define name="content">
+			<h:panelGroup style="text-align:-webkit-center;">
+				<h:messages id="msg1" styleClass="errorText" />
+				<h:form id="formID">
+					<div class="col-md-12">
+						<div class="col-md-3"></div>
+						<div class="col-md-6">
+							<p:messages id="msg" styleClass="errorText"
+								style="text-align: center;" />
+							<p:growl id="growl" showDetail="true" life="3000" />
+						</div>
+					</div>
+					<h:panelGrid>
+						<p:fieldset styleClass="sectionHeaderaa"
+							style="margin-bottom:50px">
+							<legend class="ui-fieldset-legend ui-corner-all ui-state-default"
+								style="color: #4169E1; text-align: center;"> Enter your
+								credentials of Azure and Service Portal to get the report of
+								tickets/WorkItem </legend>
+							<h:panelGrid columns="9">
+								<h:panelGrid>
+									<div id="azureLogo" />
+								</h:panelGrid>
+								<h:panelGrid columns="2">
+									<div class="ui-g">
+										<div class="ui-g-6 ui-g-nopad">
+											<div class="ui-g-2">
+												<p:outputLabel value="Organisation Name:" />
+											</div>
+											<div class="ui-g-4">
+												<h:panelGrid columns="4">
+													<p:inputTextarea id="showIncomplete" rows="1" cols="22"
+														rendered="#{statusFinder.applications_SI.size() eq 0}"
+														placeholder="Should be your Azure Organization name" required="true"
+														requiredMessage="Org cannot be empty"
+														value="#{statusFinder.auth.orgName}">
+													</p:inputTextarea>
+													<p:outputLabel value="#{statusFinder.auth.orgName}"
+														rendered="#{statusFinder.applications_SI.size() gt 0}"
+														style="color: blue; " />
+												</h:panelGrid>
+											</div>
+										</div>
+									</div>
+									<div class="p-grid">
+										<div class="ui-g-6 ui-g-nopad">
+											<div class="ui-g-2">
+												<p:outputLabel value="Azure User Name:" />
+											</div>
+											<div class="ui-g-4">
+												<h:panelGrid columns="4">
+													<p:inputTextarea rows="1" cols="22"
+														rendered="#{statusFinder.applications_SI.size() eq 0}"
+														required="true"
+														requiredMessage="Azure UserName is missing."
+														placeholder="Should be your Email-id"
+														value="#{statusFinder.auth.azureUserName}">
+													</p:inputTextarea>
+													<p:outputLabel value="#{statusFinder.auth.azureUserName}"
+														rendered="#{statusFinder.applications_SI.size() gt 0}"
+														style="color: blue; " />
+												</h:panelGrid>
+											</div>
+										</div>
+									</div>
+									<div class="p-grid">
+										<div class="ui-g-6 ui-g-nopad">
+											<div class="ui-g-2">
+												<p:outputLabel value="Azure Token:" />
+											</div>
+											<div class="ui-g-4">
+												<h:panelGrid columns="4">
+													<p:inputTextarea placeholder="Make sure Token is Active"
+														rendered="#{statusFinder.applications_SI.size() eq 0}"
+														required="true" style="-webkit-text-security: square;"
+														requiredMessage="Azure Token is missing"
+														value="#{statusFinder.auth.azureToken}">
+													</p:inputTextarea>
+													<p:outputLabel value="*****"
+														rendered="#{statusFinder.applications_SI.size() gt 0}"
+														style="color: blue; " />
+													<p:spacer width="40px" height="0px" />
+													<p:commandLink value="Edit Token"
+														style="width: 120px; height: 30px"
+														action="#{statusFinder.resetAzureToken}" update="@form"
+														onstart="PF('blockUIWidget').block()"
+														rendered="#{statusFinder.applications_SI.size() gt 0}"
+														oncomplete="PF('blockUIWidget').unblock()" process="@form"
+														styleClass="btn btn-info btn-lg btn-block icon icon-search">
+													</p:commandLink>
+												</h:panelGrid>
+											</div>
+										</div>
+									</div>
+								</h:panelGrid>
+
+
+								<h:panelGrid columns="1">
+									<h:panelGrid columns="2"
+										rendered="#{statusFinder.applications_SI.size() eq 0}">
+										<div class="p-grid">
+											<div class="ui-g-6 ui-g-nopad">
+												<div class="ui-g-2">
+													<p:commandLink value="Get Applications"
+														style="width: 150px; height: 200px"
+														actionListener="#{statusFinder.projects}" update="@form"
+														onstart="PF('blockUIWidget').block()"
+														oncomplete="PF('blockUIWidget').unblock()" process="@form"
+														styleClass="btn btn-info btn-lg btn-block icon icon-search">
+													</p:commandLink>
+												</div>
+												<div class="ui-g-4">
+													<h:panelGrid columns="4">
+
+													</h:panelGrid>
+												</div>
+											</div>
+										</div>
+									</h:panelGrid>
+									<h:panelGrid columns="2"
+										rendered="#{statusFinder.applications_SI.size() gt 0}">
+										<div class="p-grid">
+											<div class="ui-g-6 ui-g-nopad">
+												<div class="ui-g-2">
+													<p:outputLabel value="Project Name:" />
+												</div>
+												<div class="ui-g-4">
+													<h:panelGrid columns="4">
+														<h:selectOneMenu id="country" styleClass="dropdown"
+															value="#{statusFinder.auth.projectName}" immediate="true"
+															required="true" requiredMessage="Select one application"
+															style="width:150px">
+															<f:selectItem itemLabel="Select One"
+																itemValue="Select One" />
+															<f:selectItems value="#{statusFinder.applications_SI}" />
+														</h:selectOneMenu>
+													</h:panelGrid>
+												</div>
+											</div>
+										</div>
+									</h:panelGrid>
+								</h:panelGrid>
+
+								<h:panelGrid>
+									<p:spacer width="15px" height="15px" />
+								</h:panelGrid>
+
+
+								<h:panelGrid
+									rendered="#{statusFinder.applications_SI.size() gt 0}">
+									<div id="servicePortalLogo" />
+								</h:panelGrid>
+
+								<h:panelGrid columns="2"
+									rendered="#{statusFinder.applications_SI.size() gt 0}">
+									<div class="ui-g">
+										<div class="ui-g-6 ui-g-nopad">
+											<div class="ui-g-2">
+												<p:outputLabel value="User Name:" />
+											</div>
+											<div class="ui-g-4">
+												<h:panelGrid columns="4">
+													<p:inputTextarea rows="1" cols="22" required="true"
+														requiredMessage="Service Portal UserName is missing"
+														placeholder="FirstName.LastName"
+														value="#{statusFinder.auth.spUserName}">
+													</p:inputTextarea>
+												</h:panelGrid>
+											</div>
+										</div>
+									</div>
+									<div class="p-grid">
+										<div class="ui-g-6 ui-g-nopad">
+											<div class="ui-g-2">
+												<p:outputLabel value="Password:" />
+											</div>
+											<div class="ui-g-4">
+												<h:panelGrid columns="4">
+													<p:inputTextarea placeholder="Your desktop password"
+														required="true" style="-webkit-text-security: square;"
+														rendered="#{statusFinder.auth.spPassword == null}"
+														requiredMessage="Service Portal Password is missing"
+														value="#{statusFinder.auth.spPassword}">
+													</p:inputTextarea>
+													<p:outputLabel value="*****"
+														rendered="#{statusFinder.auth.spPassword != null}"
+														style="color: blue; " />
+													<p:spacer width="40px" height="1px" />
+													<p:commandLink value="Edit Password"
+														style="width: 120px; height: 30px"
+														action="#{statusFinder.resetSpPassword}" update="@form"
+														onstart="PF('blockUIWidget').block()"
+														rendered="#{statusFinder.auth.spPassword != null}"
+														oncomplete="PF('blockUIWidget').unblock()" process="@form"
+														styleClass="btn btn-info btn-lg btn-block icon icon-search">
+													</p:commandLink>
+												</h:panelGrid>
+											</div>
+										</div>
+									</div>
+								</h:panelGrid>
+
+								<h:panelGrid>
+									<p:spacer width="15px" height="15px" />
+								</h:panelGrid>
+								<!-- rendered="#{statusFinder.applications_SI.size() gt 0}" -->
+								<h:panelGrid>
+									<p:commandLink value="Status"
+										style="width: 100px; height: 200px"
+										action="#{statusFinder.status}" update="@form"
+										onstart="PF('blockUIWidget').block()"
+										rendered="#{statusFinder.applications_SI.size() ne 0}"
+										oncomplete="PF('blockUIWidget').unblock()" process="@form"
+										styleClass="btn btn-warning btn-lg btn-block icon icon-search">
+									</p:commandLink>
+								</h:panelGrid>
+							</h:panelGrid>
+
+							<h:panelGrid columns="2">
+								<p:spacer width="45px" height="45px" />
+							</h:panelGrid>
+						</p:fieldset>
+					</h:panelGrid>
+
+					<h:panelGrid rendered="#{statusFinder.statusInfoTable.size() gt 0}"
+						id="tableIdForStatus"
+						style="width: 70%; text-align:-webkit-center;">
+						<p:fieldset styleClass="sectionHeaderaa"
+							style="margin-bottom:50px">
+							<legend class="ui-fieldset-legend ui-corner-all ui-state-default"
+								style="color: #4169E1; text-align: center;"> Data from
+								ServicePortal and Azure. Total work Items:
+								#{statusFinder.statusInfoTable.size()}</legend>
+							<ui:include src="statusTable.xhtml" />
+						</p:fieldset>
+					</h:panelGrid>
+				</h:form>
+			</h:panelGroup>
+		</ui:define>
+	</ui:composition>
+</f:view>
+</html>

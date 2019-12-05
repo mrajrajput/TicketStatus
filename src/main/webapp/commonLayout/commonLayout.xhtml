@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	</f:facet>
+	<title>Connect</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="/TicketStatus/css/primeflex/primeflex.css"></link>
+	<link rel="stylesheet" type="text/css"
+		href="/TicketStatus/css/style.css"></link>
+</h:head>
+
+<h:body>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 well well-sm">
+			<div id="header">
+				<ui:insert name="header">
+					<ui:include src="../commonLayout/header.xhtml" />
+				</ui:insert>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 well well-sm">
+			<div class="panel-primary ">
+				<ui:insert name="content">
+					<ui:include src="../commonLayout/commonContent.xhtml" />
+				</ui:insert>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 well well-sm">
+			<div id="footer">
+				<ui:insert name="footer">
+					<ui:include src="../commonLayout/footer.xhtml" />
+				</ui:insert>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<pe:blockUI widgetVar="blockUIWidget">
+			<h:panelGrid columns="2">
+				<div id="ajaxBlockUI" />
+			</h:panelGrid>
+		</pe:blockUI>
+	</div>
+
+
+	<p:ajaxExceptionHandler
+		type="javax.faces.application.ViewExpiredException"
+		update="exceptionDialog" onexception="PF('exceptionDialog').show();" />
+
+	<p:dialog id="exceptionDialog"
+		header="Exception '#{pfExceptionHandler.type}' occured!"
+		widgetVar="exceptionDialog" height="500px">
+	        Message: #{pfExceptionHandler.message} <br />
+	        StackTrace: <h:outputText
+			value="#{pfExceptionHandler.formattedStackTrace}" escape="false" />
+		<br />
+	</p:dialog>
+
+</h:body>
+</html>

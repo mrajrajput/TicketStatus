@@ -1,0 +1,44 @@
+#allPageHeader {
+	width: 940px;
+	height: 103px;	
+	background-image: url(/TicketStatus/images/centurion-1.png); 
+	background-color: #fff;
+	padding: 0;
+	background-size:cover;
+}
+
+
+#azureLogo {
+	width: 180px;
+	height: 200px;	
+	background-image: url(/TicketStatus/images/AzureDevOpsTwitterImage.jpg); 
+	background-color: #fff;
+	padding: 0;
+	background-size:cover;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+			src='../images/BusinessBanner.jpg',
+			sizingMethod='scale');	
+}
+
+
+#servicePortalLogo {
+	width: 220px;
+	height: 200px;	
+	background-image: url(/TicketStatus/images/ServicePortalImage.PNG); 
+	background-color: #fff;
+	padding: 0;
+	background-size:cover;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+			src='../images/BusinessBanner.jpg',
+			sizingMethod='scale');	
+}
+
+#ajaxBlockUI {
+	width: 300px;
+	height: 305px;	
+	background-image: url(/TicketStatus/images/lg.block-rotate-loading-gif.gif); 
+	background-color: #fff;
+	padding: 0;
+	background-size:cover;
+}
+
