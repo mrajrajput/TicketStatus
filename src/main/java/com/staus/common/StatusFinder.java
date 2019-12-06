@@ -59,6 +59,7 @@ public class StatusFinder implements Serializable {
 		modulePath = context.getRealPath(File.separator + Constants.PSfiles + File.separator + Constants.AppStatusModule);
 		scriptPath = context.getRealPath(File.separator + Constants.PSfiles + File.separator + Constants.FindStatus);
 		try {
+			//Getting created at for example: C:\Users\manjul.kumar\AppData\Local\Temp\1\Temp8371797832587079139
 			tempDir = Files.createTempDirectory("Temp");
 		} catch (IOException e) {
 			log.error("Error while created a temp directory.", e);
