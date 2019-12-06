@@ -45,7 +45,7 @@ Where
 ```-K``` = ServerINFO or if you are running localhost then arrange things to get "user.name". AD gets it for you.
 
 
-# output of playbook
+# Screens output
 
 ![](src/main/webapp/images/howToRun.gif1)
 
