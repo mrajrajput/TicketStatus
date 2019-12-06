@@ -20,7 +20,9 @@ the script findProjects.ps1 with input parameters provided by UI to give us list
 
 ## ```Status of a project```
 ```
-Java method com/staus/common/StatusFinder/status() calling Rest API of both 'Microsoft ServicePortal' and 'Microsoft Azure DevOps' using the script appStatus.psm1 with input parameters provided by UI to give us status at both platform 
+Java method com/staus/common/StatusFinder/status() calling Rest API of both 'Microsoft ServicePortal' 
+and 'Microsoft Azure DevOps' using the script appStatus.psm1 with input parameters provided by UI
+to give us status at both platform 
 ```
 
 ### Location of Status file
