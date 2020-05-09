@@ -10,12 +10,12 @@ the script findProjects.ps1 with input parameters provided by UI to give us list
 
 ### Location of Project list file
 
-![](src/main/webapp/images/projectListAtTomcatWorkingDirectory.png1)
+![](src/main/webapp/images/projectListAtTomcatWorkingDirectory.png)
 
 
 ### Project list file
 
-![](src/main/webapp/images/projectListAtTomcatWorkingDirectory_LIST.png1)
+![](src/main/webapp/images/projectListAtTomcatWorkingDirectory_LIST.png)
 
 
 ## ```Status of a project```
@@ -28,13 +28,13 @@ to give us status at both platform
 ### Location of Status file
 
 
-![](src/main/webapp/images/StatusFilesLocation.png1)
+![](src/main/webapp/images/StatusFilesLocation.png)
 
 
 
 ### Status file
 
-![](src/main/webapp/images/StatusFiles_Results.png1)
+![](src/main/webapp/images/StatusFiles_Results.png)
 
 
 # How to run 
@@ -49,7 +49,7 @@ Where
 
 # Screens output
 
-![](src/main/webapp/images/howToRun.gif1)
+![](src/main/webapp/images/howToRun.gif)
 
 
 
